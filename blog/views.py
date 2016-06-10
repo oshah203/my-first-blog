@@ -5,6 +5,9 @@ from django.shortcuts import render, get_object_or_404
 from .forms import PostForm
 from django.shortcuts import redirect
 
+
+
+
 def post_list(request): #get all posts
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date') #go to database
     return render(request, 'blog/post_list.html', {'posts': posts}) #render post_list and use variable in it
@@ -39,3 +42,8 @@ def post_edit(request, pk):
     else:
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
+
+
+
+
+
